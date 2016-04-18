@@ -1,0 +1,36 @@
+<%= render 'shared/header' %>
+<div class="edit_tutorial">
+  <div class="banner_show">
+  </div>
+
+  <div class="wrapper-skinny" id="sign_up new_guide">
+  <h2>Edit guide</h2>
+
+  <%= form_for ([@user, @guide]) do |f| %>
+
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <div class="field">
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+
+    <div class="field file_upload">
+      <%= f.label :thumbnail %>
+      <%= f.file_field :thumbnail %>
+    </div>
+
+    <div class="field file_upload">
+      <%= f.label :video %>
+      <%= f.file_field :video %>
+    </div>
+
+    <%= f.submit %>
+  <% end %>
+  </div>
+</div>

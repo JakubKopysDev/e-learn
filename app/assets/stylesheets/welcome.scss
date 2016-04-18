@@ -1,0 +1,112 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$greyish: #dddfd4;
+$redish: #e05038;
+$sand: #fae596;
+$light-blue: #3fb0ac;
+$dark-blue: #173e43;
+#homepage {
+  background-image: image-url('homepage2.jpg');
+  background-size: cover;
+  height: 100vh;
+}
+
+.logo {
+  float: left;
+  margin-left: 40px;
+    a {
+    font-size: 37px;
+    color: $greyish;
+    text-decoration: none;
+  }
+}
+nav {
+  font-weight: bold;
+  float: right;
+  margin-top: 17px;
+  ul {
+    list-style: none;
+    margin-left: 0;
+    margin-right: 40px;
+    li {
+      margin-left: 40px;
+      display: inline;
+    }
+   }
+
+  a {
+    color: $greyish;
+    text-decoration: none;
+  }
+}
+
+.nav2 {
+  font-weight: bold;
+  float: right;
+  margin-top: 15px;
+  ul {
+    list-style: none;
+    margin-left: 0;
+    li {
+      display: inline;
+    }
+   }
+
+  a {
+    padding: 36px;
+    text-decoration: none;
+
+    &:hover {
+      background: $redish;
+    }
+  }
+}
+
+#welc {
+  h1 {
+    letter-spacing: 0px;
+    font-size: 36px;
+  }
+  letter-spacing: 1px;
+  text-align: center;
+  font-weight: 700;
+  margin-top: 250px;
+  color: #e05038;
+  margin-bottom: 10px;
+}
+.buttons {
+  margin-top: 30px;
+  text-align: center;
+}
+.button {
+  margin: 0 1rem 0 1rem;
+  color: $greyish;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  background: black;
+  border-radius: 20px;
+  &:hover {
+        -webkit-transition-duration: .4s; /* Safari */
+       transition-duration: .4s;
+  }
+  }
+
+.button-highlight {
+  background-color: $light-blue;
+  &:hover {
+    background-color: lighten($light-blue, 10%);
+    -webkit-transition-duration: .4s; /* Safari */
+    transition-duration: .4s;
+  }
+}
+
+.button-dark {
+  background-color: $dark-blue!important;
+  &:hover {
+    background-color: lighten($dark-blue, 10%)!important;
+    -webkit-transition-duration: .4s; /* Safari */
+     transition-duration: .4s;
+  }
+}

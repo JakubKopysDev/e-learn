@@ -1,0 +1,57 @@
+<%= render 'shared/header' %>
+<div class="show_user">
+  <div class="banner_show" >
+  </div>
+
+  <div class="wrapper-wide">
+    <div class="user">
+      <%= image_tag@user.avatar(:medium) %>
+        <h3 class="name"><%= @user.username %></h3>
+        <span class="user_description"><%= @user.description %></span>
+        <span class="email">email: <%= @user.email %></span>
+        <% if @user.points >= 0 %>
+          <span class="points"><i class="fa fa-arrow-up"></i><%= @user.points %></span>
+        <% else %>
+          <span class="points"><i class="fa fa-arrow-down"></i><%= @user.points %></span>
+        <% end %>
+    </div>
+  </div>
+
+<div class="clear"></div>
+
+  <div class="wrapper-skinny">
+
+  <div id="dashboard_episodes user_episodes">
+    <ul class="cf">
+    <% @guides.each do |guide| %>
+    <div class="guide_each">
+      <%= link_to user_guide_path(guide.user_id, guide) do %>
+        <li class="cf guide">
+          <%= image_tag guide.thumbnail(:medium), class: "guide_thumbnail" %>
+          <div id="text">
+            <h3><%= guide.title %></h3>
+            <span id="description"><%= truncate guide.description, length: 300 %></span>
+            <br>
+            <small><%= guide.created_at.strftime("%d %B %Y") %></small>
+            <% if guide.votes >= 0 %>
+              <span id="votes_dashboard"><i class="fa fa-arrow-up"></i><%= guide.votes %></span>
+            <% else %>
+              <span id="votes_dashboard"><i class="fa fa-arrow-down"></i><%= guide.votes %></span>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+      <div class="authorized_links">
+        <% if (guide.user_id == current_user.id) || current_user.admin? %>
+          <%= link_to "Edit", edit_user_guide_path(guide.user_id, guide) %>
+          <%= link_to "Delete", user_guide_path(guide.user_id, guide), method: :delete, data: { confim: "Are you sure?"} %>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+    </ul>
+  </div>
+
+  <%= will_paginate @guides, class: "pagination bottom", :previous_label => '←', :next_label => '→' %>
+  </div>
+</div>

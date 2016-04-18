@@ -1,0 +1,38 @@
+<header class="cf header2">
+    <h1 class="logo"><%= link_to "E-LEARN", root_path %></h1>
+    <nav>
+      <ul>
+        <% unless user_signed_in? %>
+          <li><%= link_to "Log In", new_user_session_path %></li>
+          <li><%= link_to "Join us!", new_user_registration_path %></li>
+        <% else %>
+          <li>
+            <%= link_to root_path do %>
+              <i class="fa fa-home"></i> Home
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_guide_path(current_user) do%>
+              <i class="fa fa-plus"></i> Add guide
+            <% end %>
+          </li>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fa fa-sign-out"></i> Sign out
+            <% end %>
+          </li>
+          <li>
+            <%= link_to edit_user_registration_path do %>
+              <i class="fa fa-cog"></i> Settings
+            <% end %>
+          </li>
+          <li>
+            <%= link_to current_user do %>
+              <i class="fa fa-user"></i> My account
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+  </header>

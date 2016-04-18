@@ -1,0 +1,15 @@
+<% if @comment.errors.empty? %>
+  $(".comments").html("<%= escape_javascript(render @guide.comments) %>");
+  $('#comment_body').val('');
+  $("ul#notice").html('');
+<% else %>
+  $("ul#notice").html("")
+  <% if @comment.errors.any? %>
+    <% @comment.errors.messages.values.each do |msg| %>
+      <% msg.each do |m| %>
+        $("ul#notice").append($("<li />").html("<%= m.html_safe %>"))
+      <% end %>
+    <% end %>
+  <% end %>
+  $('#comment_body').val('');
+<% end %>

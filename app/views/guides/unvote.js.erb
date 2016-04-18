@@ -1,0 +1,6 @@
+<% if Vote.find_by(user_id: @user.id, guide_id: @guide.id, up_vote: true) %>
+  $("#up_<%= @guide.id %>").html("<%= escape_javascript(render 'guides/up_vote', guide: @guide, user: @user) %>");
+<% else %>
+  $("#down_<%= @guide.id %>").html("<%= escape_javascript(render 'guides/down_vote', guide: @guide, user: @user) %>");
+<% end %>
+$(".rate").html("<%= @guide.votes %>")

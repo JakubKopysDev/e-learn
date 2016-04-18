@@ -1,0 +1,18 @@
+<div id="homepage">
+  <header class="cf">
+    <h1 class="logo"><%= link_to "E-LEARN", "#" %></h1>
+    <nav>
+      <ul>
+          <li><%= link_to "Log In", new_user_session_path %></li>
+          <li><%= link_to "Join us!", new_user_registration_path %></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="wrapper-skinny" id="welc">
+    <h1>Learn programming from others, or share your experience with novices.</h1>
+  </div>
+  <div class="buttons">
+    <%= link_to "Learn something", new_user_session_path , class: "button button-highlight" %>
+    <%= link_to "Share experience", new_user_session_path, class: "button button-dark"%>
+  </div>
+</div>

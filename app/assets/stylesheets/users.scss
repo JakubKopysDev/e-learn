@@ -1,0 +1,158 @@
+$greyish: #dddfd4;
+$sand: #fae596;
+$light-blue: #3fb0ac;
+$dark-blue: #173e43;
+$redish: #e05038;
+
+#user_index {
+  display: auto;
+}
+
+.banner_dashboard {
+  background-image: image-url('thinktwicecodeonce.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 180px 0 180px 0;
+  background-position: center;
+  margin-bottom: 20px;
+  }
+
+.pagination {
+  margin-left: 20px;
+  font-size: 15px;
+  font-weight: 700;
+  a {
+    text-decoration: none;
+    background: $light-blue;
+    padding: 5px 9px;
+    color: $redish;
+    margin: 2px;
+    &:hover {
+    background: $redish;
+    padding: 5px 9px;
+    color:  $light-blue;
+    margin: 2px;
+    -webkit-transition-duration: .3s; /* Safari */
+    transition-duration: .3s;
+    }
+  }
+
+  .current {
+    font-style: normal;
+    background: $redish;
+    padding: 5px 9px;
+    color:  $light-blue;
+    margin: 2px;
+  }
+  .disabled {
+    background: $redish;
+    padding: 5px 9px;
+    color:  $light-blue;
+    margin: 2px;
+  }
+}
+
+.bottom {
+  margin: 20px 0 50px 0;
+}
+#dashboard_episodes {
+  ul {
+  list-style: none;
+  }
+}
+
+.dashboard {
+  a {
+    span#votes_dashboard {
+      float: right;
+      font-weight: 700;
+    }
+  }
+  .flash {
+    color: #9F6000;
+    background-color: #FEEFB3;
+    padding: 20px;
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .search {
+    float: right;
+    form {
+      margin-right: 10px;
+      padding: 10px;
+      background: $redish;
+      border-radius: 20px;
+        input[type=text] {
+          width: 350px;
+        }
+      }
+    }
+    input[type=submit] {
+      border: none;
+    }
+}
+.clear {
+  clear: both;
+}
+.show_user {
+  ul {
+    list-style: none;
+    #votes_dashboard {
+      float: right;
+    }
+    a
+    {
+      text-decoration: none;
+      li {
+        span#description {
+          color: $light-blue;
+        }
+      }
+    }
+    .guide_each {
+      margin-bottom: 20px;
+    }
+  }
+  .user {
+    margin-bottom: 50px;
+    position: relative;
+    height: 216px;
+    img {
+      float: left;
+      padding: 2px;
+      background: white;
+      border: 6px solid $light-blue;
+      border-radius: 30px;
+      margin-top: -40px;
+      margin-right: 10px;
+    }
+    span {
+      text-align: left;
+    }
+    h3.name {
+      margin: 10px 0 10px 0px;
+      color: $redish;
+      border-bottom: 6px solid $light-blue;
+      width: 40%;
+    }
+    span.email {
+      display: inline-block;
+      position: absolute;
+      bottom: 0;
+      left: 286px;
+      color: lighten($redish, 10%);
+    }
+    span.points {
+      display: inline-block;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      color: $light-blue;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+}

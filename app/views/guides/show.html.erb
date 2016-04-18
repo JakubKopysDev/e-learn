@@ -1,0 +1,82 @@
+<%= render 'shared/header' %>
+<div class="show_guide">
+
+  <div class="links">
+    <div class="wrapper-skinny">
+        <li><%= link_to "Dashboard", root_path %></li>
+        <span> / </span>
+        <li class="current"><%= @guide.title %></li>
+    </div>
+  </div>
+
+  <div class="guide_content">
+    <div class="wrapper-guide">
+      <% if @guide.video? %>
+      <div class="ratings" >
+      <ul id="voteguide">
+        <% unless current_user.up_voted?(@guide) %>
+          <span id="up_<%= @guide.id %>"><%= render 'guides/up_vote', guide: @guide, user: @user %></span>
+        <% else %>
+          <span id="up_<%= @guide.id %>"><%= render 'guides/unvote', guide: @guide, user: @user %></span>
+        <% end %>
+        <% unless current_user.down_voted?(@guide) %>
+          <span id="down_<%= @guide.id %>"><%= render 'guides/down_vote', guide: @guide, user: @user %></span>
+        <% else %>
+          <span id="down_<%= @guide.id %>"><%= render 'guides/unvote', guide: @guide, user: @user %></span>
+        <% end %>
+        <% if @guide.votes >= 0 %>
+          <li><span class="rate positive"> <%= @guide.votes %></span></li>
+        <% else %>
+          <li><span class="rate negative"> <%= @guide.votes %></span></li>
+        <% end %>
+        </ul>
+      </div>
+      <div class="guide_video">
+        <%= video_tag @guide.video.url(:medium), controls: true, style: "max-width: 100%;"%>
+      </div>
+      <% end %>
+
+    </div>
+
+      <div class="description">
+            <h3><%= @guide.title %><small class="time"><%= @guide.created_at.strftime("%d %B %Y") %></small></h3>
+        <span><%= @guide.description %></span>
+      </div>
+  </div>
+
+  <div id="episodes">
+    <h4>More <%= @user.username %>'s videos:</h4>
+        <ul class="cf">
+          <% @guides.each do |guide| %>
+            <li class="cf guide">
+              <%= link_to user_guide_path(guide.user_id, guide) do %>
+                <%= image_tag guide.thumbnail(:medium), class: "guide_thumbnail" %>
+                <div id="text">
+                  <h3><%= guide.title %> </h3>
+                  <span id="description"><%= truncate guide.description, length: 300 %></span>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+        <%= will_paginate @guides, :previous_label => '←', :next_label => '→' %>
+  </div>
+
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "flash #{key}" %>
+<% end %>
+
+<ul id="notice"></ul>
+
+  <div class="add_comment">
+    <%= form_for [@user, @guide, Comment.new], remote: true  do |f| %>
+      <p>
+        <%= f.text_area :body %>
+      </p>
+      <p><%= f.submit "Add comment" %></p>
+    <% end %>
+  </div>
+  <div class="comments">
+    <%= render @guide.comments %>
+  </div>
+</div>

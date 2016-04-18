@@ -1,0 +1,4 @@
+$("#down_<%= @guide.id %>").html("<%= escape_javascript(render 'guides/down_vote', guide: @guide, user: @user) %>");
+$("#up_<%= @guide.id %>").html("<%= escape_javascript(render 'guides/unvote', guide: @guide, user: @user) %>");
+
+$(".rate").html("<%= @guide.votes %>")
